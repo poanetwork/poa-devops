@@ -1,0 +1,6 @@
+---
+#AWS Key
+access_key: "KEY_NAME"
+secret_key: "KEY_SECRET"
+
+s3_bucket: "BUCKET_NAME"
