@@ -1,0 +1,31 @@
+---
+- name: Shutdown poa-netstats service
+  service: name=poa-netstats state=stopped
+
+- name: Shutdown poa-parity service
+  service: name=poa-parity state=stopped
+
+- name: Create backup directory
+  file: path=/data state=directory
+
+- name: Create blockchain archive
+  archive:
+    format: gz
+    path: /home/moc/parity_data
+    dest: "/data/parity_data-{{ date }}.tar.gz"
+
+- name: Upload to s3
+  s3:
+    aws_access_key: "{{ access_key }}"
+    aws_secret_key: "{{ secret_key }}"
+    bucket: "{{ s3_bucket }}"
+    object: "/parity_data-{{ date }}.tar.gz"
+    src: "/data/parity_data-{{ date }}.tar.gz"
+    mode: put
+
+- name: Launch poa-parity service
+  service: name=poa-parity state=started
+
+- name: Launch poa-netstats service
+  service: name=poa-netstats state=started
+

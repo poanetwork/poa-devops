@@ -1,0 +1,8 @@
+- hosts: backup
+  vars:
+    date: "{{ lookup('pipe', 'date +%Y%m%d-%H%M') }}"
+    s3_bucket: "poa-backups"
+  user: root
+  roles:
+    - backup-parity
+  tags: backup
