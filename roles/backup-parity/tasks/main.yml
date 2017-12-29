@@ -12,7 +12,7 @@
   archive:
     format: gz
     path: /home/moc/parity_data
-    dest: "/data/parity_data-{{ date }}.tar.gz"
+    dest: "/data/parity_data.tar.gz"
 
 - name: Upload to s3
   s3:
@@ -20,8 +20,14 @@
     aws_secret_key: "{{ secret_key }}"
     bucket: "{{ s3_bucket }}"
     object: "/parity_data-{{ date }}.tar.gz"
-    src: "/data/parity_data-{{ date }}.tar.gz"
+    src: "/data/parity_data.tar.gz"
     mode: put
+  ignore_errors: yes
+
+- name: Clean local backup storage
+  file:
+    state: absent
+    path: "/data/"
 
 - name: Launch poa-parity service
   service: name=poa-parity state=started
