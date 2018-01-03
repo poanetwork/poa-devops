@@ -30,7 +30,7 @@ pip install ansible
 ```
 cp group_vars/all.example group_vars/all
 ```
-and set the following variables in it:
+and set the following variables:
 * `poa_role` - node's role (one of `bootnode`, `validator`, `moc`, `explorer`, `netstat`)
 * `access_key` - s3 access key
 * `secret_key` - s3 secret key
@@ -57,7 +57,7 @@ crontab -e
 ```
 append the following line:
 ```
-30 * * * * /bin/bash /root/poa-devops/cron-bkp-blockchain.sh
+30 * * * * /bin/bash /root/poa-devops/bkp-blockchain-cron.sh
 ```
 
 11. configure logrotate to archive old log files. Create file `/etc/cron.hourly/poa-devops-logrotate` with the following content:
