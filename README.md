@@ -30,7 +30,7 @@ pip install ansible
 ```
 cp group_vars/all.example group_vars/all
 ```
-and set the following variables:
+and set the following variables in it:
 * `poa_role` - node's role (one of `bootnode`, `validator`, `moc`, `explorer`, `netstat`)
 * `access_key` - s3 access key
 * `secret_key` - s3 secret key
@@ -51,7 +51,7 @@ localhost
 ansible-playbook -i hosts -c local site.yml
 ```
 
-19. if all is well, setup a cronjob to run every hour:
+10. if all is well, setup a cronjob to run every hour:
 ```
 crontab -e
 ```
