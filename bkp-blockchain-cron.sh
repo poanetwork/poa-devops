@@ -13,8 +13,8 @@ ERR_FILE="logs/bkp-blockchain.err"
 
 cd /root/poa-devops
 
-echo "$(date -u)" >> $OUT_FILE
-echo "$(date -u)" >> $ERR_FILE
+echo "Starting at $(date -u)" >> $OUT_FILE
+echo "Starting at $(date -u)" >> $ERR_FILE
 
 # actual command
 /usr/local/bin/ansible-playbook -i hosts -c local site.yml >> $OUT_FILE 2>> $ERR_FILE
