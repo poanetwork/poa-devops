@@ -2,3 +2,5 @@ files/*.pub
 *.retry
 group_vars/all
 hosts
+out.txt
+err.txt
