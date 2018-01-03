@@ -59,3 +59,13 @@ append the following line:
 ```
 30 * * * * /bin/bash /root/poa-devops/cron-bkp-blockchain.sh
 ```
+
+11. configure logrotate to archive old log files. Create file `/etc/cron.hourly/poa-devops-logrotate` with the following content:
+```
+#!/bin/bash
+/usr/sbin/logrotate /root/poa-devops/bkp-blockchain-logrotate.conf
+```
+and set permission to run it:
+```
+chmod 755 /etc/cron.hourly/poa-devops-logrotate
+```
