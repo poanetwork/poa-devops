@@ -2,3 +2,13 @@ files/*.pub
 *.retry
 group_vars/all
 hosts
+
+logs/*.err
+logs/*.out
+logs/*.log
+logs/*.gz
+
+logs/old/*.err
+logs/old/*.out
+logs/old/*.log
+logs/old/*.gz

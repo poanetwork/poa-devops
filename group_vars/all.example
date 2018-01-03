@@ -1,4 +1,6 @@
 ---
+poa_role: "bootnode|validator|moc|explorer|netstat"
+
 #AWS Key
 access_key: "KEY_NAME"
 secret_key: "KEY_SECRET"

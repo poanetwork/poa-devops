@@ -11,7 +11,7 @@
 - name: Create blockchain archive
   archive:
     format: gz
-    path: /home/moc/parity_data
+    path: /home/{{ poa_role }}/parity_data
     dest: "/data/parity_data.tar.gz"
 
 - name: Upload to s3
