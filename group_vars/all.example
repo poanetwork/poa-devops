@@ -6,3 +6,7 @@ access_key: "KEY_NAME"
 secret_key: "KEY_SECRET"
 
 s3_bucket: "BUCKET_NAME"
+
+#For HFs
+MAIN_REPO_FETCH: "poanetwork"
+GENESIS_BRANCH: "sokol"
