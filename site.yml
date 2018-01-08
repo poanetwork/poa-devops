@@ -1,6 +1,6 @@
 - hosts: backup
   vars:
-    date: "{{ lookup('pipe', 'date +%Y%m%d-%H%M') }}"
+    date: "{{ lookup('pipe', 'date -u +%Y%m%d-%H%M%S') }}"
   user: root
   roles:
     - backup-parity
