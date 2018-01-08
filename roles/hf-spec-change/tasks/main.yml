@@ -1,6 +1,7 @@
 ---
 - name: Shutdown poa-netstats service
   service: name=poa-netstats state=stopped
+  ignore_errors: yes
 
 - name: Shutdown poa-parity service
   service: name=poa-parity state=stopped
@@ -21,3 +22,4 @@
 
 - name: Launch poa-netstats service
   service: name=poa-netstats state=started
+  ignore_errors: yes
