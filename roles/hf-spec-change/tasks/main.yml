@@ -1,0 +1,23 @@
+---
+- name: Shutdown poa-netstats service
+  service: name=poa-netstats state=stopped
+
+- name: Shutdown poa-parity service
+  service: name=poa-parity state=stopped
+
+- name: Create directory for spec backups
+  file: path={{ home }}/spec-hfs state=directory
+
+- name: Create previous spec backup
+  command: cp {{ home }}/spec.json {{ home }}/spec-hfs/spec-hf-{{ date }}.json
+
+- name: Download new spec
+  get_url: url={{ item }} dest={{ home }}/ mode=0644
+  with_items:
+    - "https://raw.githubusercontent.com/{{ MAIN_REPO_FETCH }}/poa-chain-spec/{{ GENESIS_BRANCH }}/spec.json"
+
+- name: Launch poa-parity service
+  service: name=poa-parity state=started
+
+- name: Launch poa-netstats service
+  service: name=poa-netstats state=started
