@@ -1,6 +1,12 @@
 ---
+- name: Check that the netstats service is installed
+  stat:
+    path: /etc/systemd/system/poa-netstats.service
+  register: netstats_service_file
+
 - name: Shutdown poa-netstats service
   service: name=poa-netstats state=stopped
+  when: netstats_service_file.stat.exists
 
 - name: Shutdown poa-parity service
   service: name=poa-parity state=stopped
@@ -21,3 +27,4 @@
 
 - name: Launch poa-netstats service
   service: name=poa-netstats state=started
+  when: netstats_service_file.stat.exists
