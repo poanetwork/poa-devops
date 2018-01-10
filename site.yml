@@ -11,6 +11,8 @@
     date: "{{ lookup('pipe', 'date -u +%Y%m%d-%H%M%S') }}"
     home: "/home/{{ poa_role }}"
   user: root
+  become: true
+  become_user: root
   roles:
     - hf-spec-change
   tags: hf-spec
