@@ -1,37 +1,76 @@
 ---
+# initial checks
+- name: Check that the netstats service is installed
+  stat:
+    path: /etc/systemd/system/poa-netstats.service
+  register: netstats_service_file
+
+- name: Check that parity is running
+  shell: "systemctl is-active poa-parity"
+  register: parity_service_active
+
+# stop services
 - name: Shutdown poa-netstats service
   service: name=poa-netstats state=stopped
+  when: netstats_service_file.stat.exists
 
 - name: Shutdown poa-parity service
   service: name=poa-parity state=stopped
 
+# make backups
 - name: Create backup directory
   file: path=/data state=directory
 
-- name: Create blockchain archive
+- name: Create parity_data archive
   archive:
     format: gz
     path: /home/{{ poa_role }}/parity_data
     dest: "/data/parity_data.tar.gz"
+  when: backup_parity_data == true
 
-- name: Upload to s3
+- name: Export parity blocks
+  shell: "cd /home/{{ poa_role }}; ./parity --config node.toml export blocks blocks.rlp"
+  when: backup_parity_blocks == true
+
+- name: Create parity blocks archive
+  archive:
+    format: gz
+    path: /home/{{ poa_role }}/blocks.rlp
+    dest: "/data/parity_blocks.rlp.gz"
+  when: backup_parity_blocks == true
+
+# start services
+- name: Launch poa-parity service
+  service: name=poa-parity state=started
+  when: parity_service_active == "active"
+
+- name: Launch poa-netstats service
+  service: name=poa-netstats state=started
+  when: netstats_service_file.stat.exists
+
+# upload backups to s3
+- name: Upload parity_data to s3
   s3:
     aws_access_key: "{{ access_key }}"
     aws_secret_key: "{{ secret_key }}"
     bucket: "{{ s3_bucket }}"
-    object: "/parity_data-{{ date }}.tar.gz"
+    object: "/{{ date }}-{{ poa_role }}-{{ node_name }}-parity_data.tar.gz"
     src: "/data/parity_data.tar.gz"
     mode: put
-  ignore_errors: yes
+  when: backup_parity_data == true
 
+- name: Upload parity blocks to s3
+  s3:
+    aws_access_key: "{{ access_key }}"
+    aws_secret_key: "{{ secret_key }}"
+    bucket: "{{ s3_bucket }}"
+    object: "/{{ date }}-{{ poa_role }}-{{ node_name }}-parity_blocks.rlp.gz"
+    src: "/data/parity_blocks.rlp.gz"
+    mode: put
+  when: backup_parity_blocks == true
+
+# Cleanup
 - name: Clean local backup storage
   file:
     state: absent
     path: "/data/"
-
-- name: Launch poa-parity service
-  service: name=poa-parity state=started
-
-- name: Launch poa-netstats service
-  service: name=poa-netstats state=started
-

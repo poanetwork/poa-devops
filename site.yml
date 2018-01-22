@@ -10,7 +10,7 @@
   vars:
     date: "{{ lookup('pipe', 'date -u +%Y%m%d-%H%M%S') }}"
     home: "/home/{{ poa_role }}"
-  user: root
+  user: ubuntu
   become: true
   become_user: root
   roles:

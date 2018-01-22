@@ -1,0 +1,13 @@
+---
+# bootnode | moc | validator | explorer | netstat
+poa_role: "moc"
+
+# backup modes
+backup_parity_data: true
+backup_parity_blocks: true
+
+# AWS
+access_key: "KEY_NAME"
+secret_key: "KEY_SECRET"
+s3_bucket: "BUCKET_NAME"
+node_name: "NODE_NAME"
