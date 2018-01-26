@@ -3,12 +3,12 @@
 - name: Check that poa-netstats is running
   shell: "systemctl is-active poa-netstats"
   register: systemctl_poa_netstats
-  fail_when: systemctl_poa_netstats.rc != 0 and systemctl_poa_netstats.rc != 3 # neither active nor inactive
+  failed_when: systemctl_poa_netstats.rc not in [0,3] # neither active nor inactive
 
 - name: Check that poa-parity is running
   shell: "systemctl is-active poa-parity"
   register: systemctl_poa_parity
-  fail_when: systemctl_poa_parity.rc != 0 and systemctl_poa_parity.rc != 3 # neither active nor inactive
+  failed_when: systemctl_poa_parity.rc not in [0,3] # neither active nor inactive
 
 # stop services
 - name: Shutdown poa-netstats service
