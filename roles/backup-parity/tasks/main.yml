@@ -48,7 +48,7 @@
 
 - name: Launch poa-netstats service
   service: name=poa-netstats state=started
-  when: netstats_service_file.stat.exists
+  when: systemctl_poa_netstats.rc == 0
 
 # upload backups to s3
 - name: Upload parity_data to s3
