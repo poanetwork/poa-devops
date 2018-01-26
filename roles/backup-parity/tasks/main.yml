@@ -1,21 +1,23 @@
 ---
 # initial checks
-- name: Check that the netstats service is installed
-  stat:
-    path: /etc/systemd/system/poa-netstats.service
-  register: netstats_service_file
+- name: Check that poa-netstats is running
+  shell: "systemctl is-active poa-netstats"
+  register: systemctl_poa_netstats
+  fail_when: systemctl_poa_netstats.rc != 0 and systemctl_poa_netstats.rc != 3 # neither active nor inactive
 
-- name: Check that parity is running
+- name: Check that poa-parity is running
   shell: "systemctl is-active poa-parity"
-  register: parity_service_active
+  register: systemctl_poa_parity
+  fail_when: systemctl_poa_parity.rc != 0 and systemctl_poa_parity.rc != 3 # neither active nor inactive
 
 # stop services
 - name: Shutdown poa-netstats service
   service: name=poa-netstats state=stopped
-  when: netstats_service_file.stat.exists
+  when: systemctl_poa_netstats.rc == 0
 
 - name: Shutdown poa-parity service
   service: name=poa-parity state=stopped
+  when: systemctl_poa_parity.rc == 0
 
 # make backups
 - name: Create backup directory
@@ -42,7 +44,7 @@
 # start services
 - name: Launch poa-parity service
   service: name=poa-parity state=started
-  when: parity_service_active == "active"
+  when: systemctl_poa_parity.rc == 0
 
 - name: Launch poa-netstats service
   service: name=poa-netstats state=started
