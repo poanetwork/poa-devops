@@ -31,15 +31,16 @@ pip install ansible
 
 8. create `group_vars/all` file:
 ```
-cp group_vars/all.example group_vars/all
+cp group_vars/backup-parity.example group_vars/all
 ```
 and set the following variables:
 * `poa_role` - node's role (one of `bootnode`, `validator`, `moc`, `explorer`, `netstat`)
+* `backup_parity_data` - `true`/`false` - backup whole `parity_data` folder "as is" or not (default: `true`)
+* `backup_parity_blocks` - `true`/`false` - use or not `parity export blocks` to create a file with exported blocks and backup it (default: `true`)
 * `access_key` - s3 access key
 * `secret_key` - s3 secret key
 * `s3_bucket` - s3 bucket name
-
-you can ignore other variables in this file
+* `node_name` - short descriptive name of the node (e.g. `sokol-arche`). It will be used as part of a backup file name, so it must be lowercase, must not contain spaces, commas, etc
 
 9. create `hosts` file:
 ```
