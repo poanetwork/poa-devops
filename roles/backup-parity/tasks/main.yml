@@ -77,7 +77,7 @@
     state: absent
     path: "/data/"
 
--name: Clean rlp file
+- name: Clean rlp file
   file:
     state: absent
     path: "/home/{{ poa_role }}/blocks.rlp"
