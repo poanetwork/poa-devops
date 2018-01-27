@@ -71,8 +71,13 @@
     mode: put
   when: backup_parity_blocks == true
 
-# Cleanup
+# cleanup
 - name: Clean local backup storage
   file:
     state: absent
     path: "/data/"
+
+-name: Clean rlp file
+  file:
+    state: absent
+    path: "/home/{{ poa_role }}/blocks.rlp"

@@ -1,4 +1,4 @@
-## Setup blockchain backup from a node
+## Setup blockchain backup on a node
 1. connect to the node as `root`.
 
 2. clone this repository to `root`'s home folder:
@@ -73,4 +73,100 @@ append the following line:
 and set permission to run it:
 ```
 chmod 755 /etc/cron.hourly/poa-devops-logrotate
+```
+
+## How to restore from the backup
+
+### Restore from `parity_data`
+0. place backup file to the user's home directory, e.g. `/home/bootnode` (or `/home/moc`, etc)
+
+1. stop netstats (if it's installed) and parity
+```
+# may fail if netstats is not installed, ignore it then:
+systemctl stop poa-netstats
+systemctl stop poa-parity
+```
+
+2. backup your current `parity_data`
+```
+# replace bootnode with other role's name if necessary (e.g. moc, validator, etc)
+cd /home/bootnode
+mv parity_data parity_data.bkp.$(date -u +%Y%m%d-%H%M%S)
+```
+
+3. unpack `parity_data` folder from backup
+```
+# exact filename will be different
+tar -xz 20180127-134045-bootnode-sokol-archive-parity_data.tar.gz
+```
+
+4. make sure that correct user `bootnode` (or `moc`, etc) is owner of the unpacked directory
+```
+ls -lh
+```
+check owner of the `parity_data`, if it's incorrect, run
+```
+# replace bootnode with correct user name if necessary (e.g. moc, validator, etc)
+chown -R bootnode:bootnode parity_data
+```
+
+5. restart parity and netstats (if it's installed)
+```
+systemctl start poa-parity
+# unnecessary if netstats is not installed:
+systemctl start poa-netstats
+```
+
+6. open `NETSTATS_URL` in your browser to see if node is up and accepts blocks. If not, explore parity logs in `/home/bootnode/logs/parity.log` or try to start parity manually to see if it fails at startup:
+```
+# assuming you're still in home folder
+./parity --config node.toml
+```
+
+### Restore from `parity_blocks`
+Parity docs: https://github.com/paritytech/parity/wiki/FAQ:-Backup,-Restore,-and-Files#how-do-i-backup-my-blockchain
+
+```
+# assuming you're still in /home/bootnode
+./parity --config node.toml import parity_blocks.rlp
+```
+
+0. place backup file to the user's home directory, e.g. `/home/bootnode` (or `/home/moc`, etc)
+
+1. stop netstats (if it's installed) and parity
+```
+# may fail if netstats is not installed, ignore it then:
+systemctl stop poa-netstats
+systemctl stop poa-parity
+```
+
+2. backup your current `parity_data`
+```
+# replace bootnode with other role's name if necessary (e.g. moc, validator, etc)
+cd /home/bootnode
+mv parity_data parity_data.bkp.$(date -u +%Y%m%d-%H%M%S)
+```
+
+3. unpack `parity_blocks.rlp` file from backup
+```
+# exact filename will be different
+gunzip 20180127-134045-bootnode-sokol-archive-parity_blocks.rlp.gz
+```
+
+4. import blocks from backup
+```
+./parity --config node.toml import parity_blocks.rlp
+```
+
+5. restart parity and netstats (if it's installed)
+```
+systemctl start poa-parity
+# unnecessary if netstats is not installed:
+systemctl start poa-netstats
+```
+
+6. open `NETSTATS_URL` in your browser to see if node is up and accepts blocks. If not, explore parity logs in `/home/bootnode/logs/parity.log` or try to start parity manually to see if it fails at startup:
+```
+# assuming you're still in home folder
+./parity --config node.toml
 ```
