@@ -4,6 +4,7 @@
 2. clone this repository to `root`'s home folder:
 ```
 git clone https://github.com/poanetwork/poa-devops.git
+cd poa-devops
 ```
 
 3. make sure `python` (v2.6+ or v3.5+) is installed on the node.
@@ -29,9 +30,9 @@ pip install boto boto3
 pip install ansible
 ```
 
-8. create `group_vars/all` file:
+8. create `group_vars/backup` file:
 ```
-cp group_vars/backup-parity.example group_vars/all
+cp group_vars/backup.example group_vars/backup
 ```
 and set the following variables:
 * `poa_role` - node's role (one of `bootnode`, `validator`, `moc`, `explorer`, `netstat`)
