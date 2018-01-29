@@ -1,11 +1,13 @@
 ---
 poa_role: "bootnode|validator|moc|explorer|netstat"
 
-#AWS Key
+#For Backups
 access_key: "KEY_NAME"
 secret_key: "KEY_SECRET"
-
 s3_bucket: "BUCKET_NAME"
+node_name: "NODE_NAME"
+backup_parity_data: true
+backup_parity_blocks: true
 
 #For HFs
 MAIN_REPO_FETCH: "poanetwork"
