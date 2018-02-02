@@ -9,18 +9,16 @@ cd poa-devops
 
 2. create `group_vars/all` file:
 ```
-cp group_vars/all.example group_vars/all
+cp group_vars/hf-spec-change.example group_vars/all
 ```
 and set the following variables:
 * `poa_role` - node's role (one of `bootnode`, `validator`, `moc`, `explorer`, `netstat`)
 * `MAIN_REPO_FETCH` - github account where spec.json is located (e.g. "poanetwork")
 * `GENESIS_BRANCH` - correct branch name to fetch from (e.g. "sokol" for testnet, "core" for mainnet)
 
-ignore other variables in this file
-
-3. create `hosts` file:
+3. create/edit `hosts` file:
 ```
-touch hosts
+echo "" > hosts
 ```
 and put your node's ip address (assuming it's 192.0.2.1) there with the following header:
 ```
