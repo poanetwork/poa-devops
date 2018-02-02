@@ -1,4 +1,4 @@
-## Make a spec.json hard-fork
+## Update scripts on validator nodes
 
 **ONLY FOR VALIDATOR NODES**
 
