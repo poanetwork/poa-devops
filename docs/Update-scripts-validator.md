@@ -32,6 +32,7 @@ and put your node's ip address (assuming it's 192.0.2.1) there with the followin
 [upd-scripts-validator]
 192.0.2.1
 ```
+**NOTE**: if you're updating an existing file, make sure you remove other tags `[...]` and ips.
 
 4. run the playbook:
 ```
