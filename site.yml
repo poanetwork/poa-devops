@@ -16,3 +16,16 @@
   roles:
     - hf-spec-change
   tags: hf-spec
+
+- hosts: upd-scripts-validator
+  vars:
+    poa_role: validator
+    username: validator
+    date: "{{ lookup('pipe', 'date -u +%Y%m%d-%H%M%S') }}"
+    home: "/home/{{ poa_role }}"
+  user: root
+  become: true
+  become_user: root
+  roles:
+    - upd-scripts-validator
+  tags: upd-validator

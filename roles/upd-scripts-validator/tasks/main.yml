@@ -1,0 +1,31 @@
+---
+- name: Check that node role is correct
+  stat:
+    path: "{{ home }}"
+  register: role_home_folder
+  failed_when: not role_home_folder.stat.exists
+
+- name: Create directory for backups
+  file: path={{ home }}/backups-scripts-validator state=directory
+
+- name: Backup existing version
+  command: cp -a {{ home }}/poa-scripts-validator {{ home }}/backups-scripts-validator/poa-scripts-validator-{{ date }}
+
+- name: Delete existing version
+  file:
+    state: absent
+    path: "{{ home }}/poa-scripts-validator"
+
+- name: Download new version
+  git: repo=https://github.com/{{ MAIN_REPO_FETCH }}/poa-scripts-validator dest={{ home }}/poa-scripts-validator version={{ SCRIPTS_VALIDATOR_BRANCH }}
+
+- name: Symlink node.toml
+  file: src="{{ home }}/node.toml" dest="{{ home }}/poa-scripts-validator/node.toml" owner="{{ username }}" group="{{ username }}" state=link
+
+- name: Change owner
+  file: path={{ home }}/poa-scripts-validator owner={{ username }} group={{ username }} recurse=yes
+
+- name: Run npm install from transferRewardToPayoutKey
+  shell: "cd {{ home }}/poa-scripts-validator/transferRewardToPayoutKey; /usr/bin/npm install"
+  become: true
+  become_user: "{{ username }}"

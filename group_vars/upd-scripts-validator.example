@@ -1,0 +1,4 @@
+---
+# repo to fetch scripts from
+MAIN_REPO_FETCH: "poanetwork"
+SCRIPTS_VALIDATOR_BRANCH: "sokol"
