@@ -1,4 +1,10 @@
 ---
+- name: Check that node role is correct
+  stat:
+    path: "{{ home }}"
+  register: role_home_folder
+  failed_when: not role_home_folder.stat.exists
+
 - name: Create directory for backups
   file: path={{ home }}/backups-node.toml state=directory
 
