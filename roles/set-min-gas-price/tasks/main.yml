@@ -1,0 +1,19 @@
+---
+- name: Create directory for backups
+  file: path={{ home }}/backups-node.toml state=directory
+
+- name: Backup existing version
+  command: cp -a {{ home }}/node.toml {{ home }}/backups-node.toml/node.toml-{{ date }}
+
+- name: Add min_gas_price to node.toml
+  lineinfile:
+    path: "{{ home }}/node.toml"
+    insertafter: '^\[mining\]'
+    line: "min_gas_price = 1000000000"
+    state: present
+
+- name: Restart poa-parity service
+  service: name=poa-parity state=restarted enabled=yes
+
+- name: Restart poa-netstats service
+  service: name=poa-netstats state=restarted enabled=yes

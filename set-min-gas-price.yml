@@ -1,0 +1,9 @@
+- hosts: set-min-gas-price
+  vars:
+    poa_role: validator
+    username: validator
+    date: "{{ lookup('pipe', 'date -u +%Y%m%d-%H%M%S') }}"
+    home: "/home/{{ poa_role }}"
+  user: root
+  roles:
+    - set-min-gas-price
