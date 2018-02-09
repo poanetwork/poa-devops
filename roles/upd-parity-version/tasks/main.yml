@@ -1,0 +1,68 @@
+---
+- name: Check that node role is correct
+  stat:
+    path: "{{ home }}"
+  register: role_home_folder
+  failed_when: not role_home_folder.stat.exists
+
+- name: Check that the netstats service is installed
+  stat:
+    path: /etc/systemd/system/poa-netstats.service
+  register: netstats_service_file
+
+- name: Shutdown poa-netstats service
+  service: name=poa-netstats state=stopped
+  when: netstats_service_file.stat.exists
+
+- name: Shutdown poa-parity service
+  service: name=poa-parity state=stopped
+
+- name: Create directory for parity-version backups
+  file: path="{{ backups_folder }}" state=directory
+
+- name: Backup parity binary
+  command: cp -a {{ home }}/parity {{ backups_folder }}/parity
+
+- name: Backup parity_data
+  command: cp -a "{{ home }}/parity_data" {{ backups_folder }}/parity_data
+  when: (backup_parity_data or "off") == "on"
+
+- name: Backup node.toml
+  command: cp -a "{{ home }}/node.toml" {{ backups_folder }}/node.toml
+
+- name: Download new parity binary version
+  get_url: url="{{ PARITY_BIN_LOC }}" dest="{{ home }}/parity" mode=0755 checksum="sha256:{{ PARITY_BIN_SHA256 }}"
+
+- name: Remove lines from node.toml (bootnode)
+  ini_file:
+    path: "{{ home }}/node.toml"
+    section: "{{ item['section'] }}"
+    option: "{{ item['option'] }}"
+    state: absent
+  with_items: "{{ bootnode_node_toml_lines_to_remove }}"
+  when: poa_role == "bootnode"
+
+- name: Add lines to node.toml (bootnode)
+  ini_file:
+    path: "{{ home }}/node.toml"
+    value: "{{ item['value'] }}"
+    section: "{{ item['section'] }}"
+    option: "{{ item['option'] }}"
+    state: present
+  with_items: "{{ bootnode_node_toml_lines_to_add }}"
+  when: poa_role == "bootnode"
+
+- name: Remove old database
+  command: "./parity --config node.toml db kill"
+  args:
+    chdir: "{{ home }}"
+  become: true
+  become_user: "{{ poa_role }}"
+  when: (resync or "off") == "on"
+
+- name: Launch poa-parity service
+  service: name=poa-parity state=started
+
+- name: Launch poa-netstats service
+  service: name=poa-netstats state=started
+  when: netstats_service_file.stat.exists

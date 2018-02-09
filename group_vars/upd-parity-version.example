@@ -1,0 +1,24 @@
+---
+# bootnode | moc | validator | explorer | netstat
+poa_role: "bootnode"
+
+# repo to fetch new binaries from
+PARITY_BIN_LOC: "http://d1h4xl4cr1h0mo.cloudfront.net/v1.9.2/x86_64-unknown-linux-gnu/parity"
+PARITY_BIN_SHA256: "3604a030388cd2c22ebe687787413522106c697610426e09b3c5da4fe70bbd33"
+
+# backup options
+backup_parity_data: "on"
+
+# do full resync
+resync: "on"
+
+# strings to remove from node.toml
+bootnode_node_toml_lines_to_remove:
+  - section: "rpc"
+    option: "threads"
+
+# strings to add in node.toml
+bootnode_node_toml_lines_to_add:
+  - section: "rpc"
+    option: "processing_threads"
+    value: 4

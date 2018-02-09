@@ -1,0 +1,10 @@
+- hosts: upd-parity-version
+  vars:
+    date: "{{ ansible_date_time.iso8601_basic_short }}"
+    home: "/home/{{ poa_role }}"
+    backups_folder: "{{ home }}/backups-version/{{ date }}"
+  user: ubuntu
+  become: true
+  become_user: root
+  roles:
+    - upd-parity-version
