@@ -134,8 +134,8 @@ By Wood/Paronyan/Kotewicz/Drwięga/Volf
 
 9. restart services
 ```
-systemctl start poa-parity
-systemctl start poa-netstats
+systemctl restart poa-parity
+systemctl restart poa-netstats
 ```
 
 10. open network statistic webpage:
