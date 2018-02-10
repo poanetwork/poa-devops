@@ -5,6 +5,7 @@ group_vars/backup
 group_vars/hf-spec-change
 group_vars/upd-parity-version
 group_vars/upd-scripts-validator
+group_vars/upd-bootnodes-txt
 hosts
 
 logs/*.err

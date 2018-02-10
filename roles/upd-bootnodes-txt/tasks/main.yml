@@ -1,0 +1,38 @@
+---
+- name: Check that node role is correct
+  stat:
+    path: "{{ home }}"
+  register: role_home_folder
+  failed_when: not role_home_folder.stat.exists
+
+- name: Check that the netstats service is installed
+  stat:
+    path: /etc/systemd/system/poa-netstats.service
+  register: netstats_service_file
+
+- name: Shutdown poa-netstats service
+  service: name=poa-netstats state=stopped
+  when: netstats_service_file.stat.exists
+
+- name: Shutdown poa-parity service
+  service: name=poa-parity state=stopped
+
+- name: Create directory for bootnodes.txt backups
+  file: path="{{ backups_folder }}" state=directory
+
+- name: Backup bootnodes.txt
+  command: cp -a {{ home }}/bootnodes.txt {{ backups_folder }}/bootnodes.txt
+
+- name: Download new bootnodes.txt
+  get_url:
+    url: "https://raw.githubusercontent.com/{{ MAIN_REPO_FETCH }}/poa-chain-spec/{{ GENESIS_BRANCH }}/bootnodes.txt"
+    dest: "{{ home }}/bootnodes.txt"
+    mode: "0644"
+    force: "yes"
+
+- name: Launch poa-parity service
+  service: name=poa-parity state=started
+
+- name: Launch poa-netstats service
+  service: name=poa-netstats state=started
+  when: netstats_service_file.stat.exists

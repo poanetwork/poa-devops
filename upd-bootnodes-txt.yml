@@ -1,0 +1,10 @@
+- hosts: upd-bootnodes-txt
+  vars:
+    date: "{{ ansible_date_time.iso8601_basic_short }}"
+    home: "/home/{{ poa_role }}"
+    backups_folder: "{{ home }}/backups-bootnodes.txt/{{ date }}"
+  user: ubuntu
+  become: true
+  become_user: root
+  roles:
+    - upd-bootnodes-txt
