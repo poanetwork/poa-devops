@@ -43,7 +43,7 @@ ansible-playbook -i hosts upd-parity-version.yml
   - for sokol test network: https://sokol-netstat.poa.network
   - for core main network: https://core-netstat.poa.network
 
-check that your node is "green" and is catching new blocks. It may take 2-3 minutes to fully start and reconnect
+check that your node is "green" and is catching new blocks. It may take 5-6 minutes to fully start and reconnect
 
 2. connect to the node
 ```
