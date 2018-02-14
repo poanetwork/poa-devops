@@ -24,11 +24,16 @@
   file: path=/data state=directory
 
 - name: Create parity_data archive
-  archive:
-    format: gz
-    path: /home/{{ poa_role }}/parity_data
-    dest: "/data/parity_data.tar.gz"
-  when: backup_parity_data == true
+  command: "tar cz --exclude=parity_data/keys/* -f /data/parity_data.tar.gz parity_data"
+  args:
+    chdir: "/home/{{ poa_role }}"
+
+#- name: Create parity_data archive
+#  archive:
+#    format: gz
+#    path: /home/{{ poa_role }}/parity_data
+#    dest: "/data/parity_data.tar.gz"
+#  when: backup_parity_data == true
 
 - name: Export parity blocks
   shell: "cd /home/{{ poa_role }}; ./parity --config node.toml export blocks blocks.rlp"
