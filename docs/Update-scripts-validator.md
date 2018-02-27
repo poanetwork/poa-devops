@@ -19,9 +19,6 @@ git pull origin master
 ```
 cp group_vars/upd-scripts-validator.example group_vars/all
 ```
-and set the following variables:
-* `MAIN_REPO_FETCH` - github account where spec.json is located (e.g. "poanetwork")
-* `SCRIPTS_VALIDATOR_BRANCH` - correct branch name to fetch from (e.g. "sokol" for testnet, "core" for mainnet)
 
 3. create/edit `hosts` file:
 ```
