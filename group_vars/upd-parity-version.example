@@ -22,3 +22,6 @@ bootnode_node_toml_lines_to_add:
   - section: "rpc"
     option: "processing_threads"
     value: 4
+  - section: "rpc"
+    option: "cors"
+    value: ['all']
