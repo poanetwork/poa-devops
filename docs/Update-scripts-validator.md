@@ -19,6 +19,10 @@ git pull origin master
 ```
 cp group_vars/upd-scripts-validator.example group_vars/all
 ```
+**NOTE**: by default playbook assumes that you are updating your SOKOL validator node. If you are updating CORE validator node, in `group_vars/all` change `SCRIPTS_VALIDATOR_BRANCH` to `"core"` as shown below:
+```
+SCRIPTS_VALIDATOR_BRANCH: "core"
+```
 
 3. create/edit `hosts` file:
 ```
