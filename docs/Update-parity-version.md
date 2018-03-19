@@ -31,7 +31,7 @@ don't change other options
 ```
 **NOTE**: if you're updating an existing file, make sure you remove other tags `[...]` and ips.
 
-4. run the playbook:
+4. run the playbook (change user: ubuntu to your user name, if necessary):
 ```
 ansible-playbook -i hosts upd-parity-version.yml
 ```
