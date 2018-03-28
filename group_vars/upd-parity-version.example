@@ -3,9 +3,9 @@
 poa_role: "bootnode"
 
 # repo to fetch new binaries from
-PARITY_BIN_LOC_UBUNTU: "http://d1h4xl4cr1h0mo.cloudfront.net/v1.10.0/x86_64-unknown-linux-gnu/parity"
+PARITY_BIN_LOC_UBUNTU: "https://d1h4xl4cr1h0mo.cloudfront.net/v1.10.0/x86_64-unknown-linux-gnu/parity"
 PARITY_BIN_SHA256_UBUNTU: "3871bae2760050316c9c1131750a2dc3fd11e1b79cd5f7a1e09015264d4c5ea0"
-PARITY_BIN_LOC_CENTOS: "http://d1h4xl4cr1h0mo.cloudfront.net/v1.10.0/x86_64-unknown-centos-gnu/parity"
+PARITY_BIN_LOC_CENTOS: "https://d1h4xl4cr1h0mo.cloudfront.net/v1.10.0/x86_64-unknown-centos-gnu/parity"
 PARITY_BIN_SHA256_CENTOS: "fd21f563a1bbce6fb5f995403946ad5dd8506d4781bddac12b26ba3249af4fe9"
 
 PARITY_VERSION_CHECK: "1.10.0"
