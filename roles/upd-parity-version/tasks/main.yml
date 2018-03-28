@@ -10,15 +10,28 @@
     path: /etc/systemd/system/poa-netstats.service
   register: netstats_service_file
 
+### checks for PARITY_VERSION_CHECK
+- name: Check if previous backups are present
+  stat: path="{{ home }}/backups-version/BEFORE-{{ PARITY_VERSION_CHECK }}"
+  register: bkp_version
+
+- name: Remove previous version backups
+  file: path="{{ home }}/backups-version" state=absent
+  when: bkp_version.stat.exists == False
+
+- name: Create directory for parity-version backups
+  file: path="{{ backups_folder }}" state=directory
+
+- name: Create backups version file
+  file: path="{{ home }}/backups-version/BEFORE-{{ PARITY_VERSION_CHECK }}" state=touch
+
+### actual upgrade
 - name: Shutdown poa-netstats service
   service: name=poa-netstats state=stopped
   when: netstats_service_file.stat.exists
 
 - name: Shutdown poa-parity service
   service: name=poa-parity state=stopped
-
-- name: Create directory for parity-version backups
-  file: path="{{ backups_folder }}" state=directory
 
 - name: Backup parity binary
   command: cp -a {{ home }}/parity {{ backups_folder }}/parity
@@ -30,10 +43,15 @@
 - name: Backup node.toml
   command: cp -a "{{ home }}/node.toml" {{ backups_folder }}/node.toml
 
-- name: Download new parity binary version
-  get_url: url="{{ PARITY_BIN_LOC }}" dest="{{ home }}/parity" mode=0755 checksum="sha256:{{ PARITY_BIN_SHA256 }}"
+- name: Download new parity binary version (Debian-like)
+  get_url: url="{{ PARITY_BIN_LOC_UBUNTU }}" dest="{{ home }}/parity" mode=0755 checksum="sha256:{{ PARITY_BIN_SHA256_UBUNTU }}"
+  when: ansible_os_family == "Debian"
 
-- name: Remove lines from node.toml (bootnode)
+- name: Download new parity binary version (RedHat-like)
+  get_url: url="{{ PARITY_BIN_LOC_CENTOS }}" dest="{{ home }}/parity" mode=0755 checksum="sha256:{{ PARITY_BIN_SHA256_CENTOS }}"
+  when: ansible_os_family == "RedHat"
+
+- name: Remove lines from node.toml (bootnode only)
   ini_file:
     path: "{{ home }}/node.toml"
     section: "{{ item['section'] }}"
@@ -42,7 +60,7 @@
   with_items: "{{ bootnode_node_toml_lines_to_remove }}"
   when: poa_role == "bootnode"
 
-- name: Add lines to node.toml (bootnode)
+- name: Add lines to node.toml (bootnode only)
   ini_file:
     path: "{{ home }}/node.toml"
     value: "{{ item['value'] }}"

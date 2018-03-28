@@ -19,3 +19,4 @@ logs/old/*.log
 logs/old/*.gz
 
 *.todo
+all
