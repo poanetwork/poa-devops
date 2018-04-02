@@ -24,6 +24,3 @@ bootnode_node_toml_lines_to_add:
   - section: "ui"
     option: "disable"
     value: "true"
-  - section: "dapps"
-    option: "disable"
-    value: "true"
