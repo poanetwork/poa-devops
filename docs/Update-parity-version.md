@@ -56,7 +56,7 @@ and check parity version (replace `bootnode` with correct role name ,e.g. `valid
 sample output:
 ```
 Parity
-  version Parity/v1.9.2-beta-0feb0bb-20180201/x86_64-linux-gnu/rustc1.23.0
+  version Parity/v1.10.6-unstable-bc0d134-20180605/x86_64-linux-gnu/rustc1.26.2
 Copyright 2015, 2016, 2017, 2018 Parity Technologies (UK) Ltd
 License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>.
 This is free software: you are free to change and redistribute it.
