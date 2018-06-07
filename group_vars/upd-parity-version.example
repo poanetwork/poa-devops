@@ -5,8 +5,8 @@ poa_role: "bootnode"
 # repo to fetch new binaries from
 PARITY_BIN_LOC_UBUNTU: "https://s3.us-east-2.amazonaws.com/poa-builds-parity-published/1.10.6/parity"
 PARITY_BIN_SHA256_UBUNTU: "539f4788fbd605a9cd87b5bf747b27ae05b8a4080b26aa3da645b0446fa9f9cc"
-PARITY_BIN_LOC_CENTOS: "https://d1h4xl4cr1h0mo.cloudfront.net/v1.10.0/x86_64-unknown-centos-gnu/parity"
-PARITY_BIN_SHA256_CENTOS: "fd21f563a1bbce6fb5f995403946ad5dd8506d4781bddac12b26ba3249af4fe9"
+PARITY_BIN_LOC_CENTOS: "https://d1h4xl4cr1h0mo.cloudfront.net/v1.10.6/x86_64-unknown-centos-gnu/parity"
+PARITY_BIN_SHA256_CENTOS: "9dd5495cadc39c90b1e40a7b3a449821bab84e55d489a688cf5b1c68c4852254"
 
 PARITY_VERSION_CHECK: "1.10.6"
 
