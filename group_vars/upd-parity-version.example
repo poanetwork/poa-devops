@@ -3,15 +3,15 @@
 poa_role: "bootnode"
 
 # repo to fetch new binaries from
-PARITY_BIN_LOC_UBUNTU: "https://s3.us-east-2.amazonaws.com/poa-builds-parity-published/1.10.6/parity"
-PARITY_BIN_SHA256_UBUNTU: "539f4788fbd605a9cd87b5bf747b27ae05b8a4080b26aa3da645b0446fa9f9cc"
-PARITY_BIN_LOC_CENTOS: "https://d1h4xl4cr1h0mo.cloudfront.net/v1.10.6/x86_64-unknown-centos-gnu/parity"
-PARITY_BIN_SHA256_CENTOS: "9dd5495cadc39c90b1e40a7b3a449821bab84e55d489a688cf5b1c68c4852254"
+PARITY_BIN_LOC_UBUNTU: "https://releases.parity.io/v1.11.8/x86_64-unknown-linux-gnu/parity"
+PARITY_BIN_SHA256_UBUNTU: "fbb349dc45e5de1b337880622be88c375998bf2ce69bb402eb9fe60f63b361f9"
+PARITY_BIN_LOC_CENTOS: "https://releases.parity.io/v1.11.8/x86_64-unknown-centos-gnu/parity"
+PARITY_BIN_SHA256_CENTOS: "3f10fb875c5d51ec890f975c60606fc2c258431814cb8d33c5231fe1b8c13259"
 
-PARITY_VERSION_CHECK: "1.10.6"
+PARITY_VERSION_CHECK: "1.11.8"
 
 # backup options
-backup_parity_data: "on"
+backup_parity_data: "off"
 
 # do full resync
 resync: "off"
@@ -20,7 +20,4 @@ resync: "off"
 bootnode_node_toml_lines_to_remove: []
 
 # strings to add in node.toml
-bootnode_node_toml_lines_to_add:
-  - section: "ui"
-    option: "disable"
-    value: "true"
+bootnode_node_toml_lines_to_add: []
