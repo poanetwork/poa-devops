@@ -11,7 +11,7 @@ PARITY_BIN_SHA256_CENTOS: "3f10fb875c5d51ec890f975c60606fc2c258431814cb8d33c5231
 PARITY_VERSION_CHECK: "1.11.8"
 
 # backup options
-backup_parity_data: "off"
+backup_parity_data: "on"
 
 # do full resync
 resync: "off"
