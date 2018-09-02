@@ -26,11 +26,12 @@ and set the following variables:
 ```
 echo "" > hosts
 ```
-and put your node's ip address (assuming it's 192.0.2.1) there with the following header:
+and put your node's ip address (assuming it's 192.0.2.1) in the following way:
 ```
 [hf-spec-change]
 192.0.2.1
 ```
+make sure you don't have other tags (`[...]`) in hosts file
 
 **NOTE** for those who host multiple nodes:
 * if all your nodes are of the same role (e.g. all bootnodes), you can run this playbook on all of them by listing their ips, e.g.
