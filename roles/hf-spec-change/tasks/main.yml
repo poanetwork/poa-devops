@@ -28,3 +28,7 @@
 - name: Launch poa-netstats service
   service: name=poa-netstats state=started
   when: netstats_service_file.stat.exists
+
+# only for BlockRewardContract HF
+- name: Remove poa-scripts-validator from cron
+  file: path=/etc/cron.hourly/transferRewardToPayoutKey state=absent
