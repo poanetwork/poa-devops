@@ -4,4 +4,4 @@ poa_role: "bootnode"
 
 # repo to fetch HFs from
 MAIN_REPO_FETCH: "poanetwork"
-GENESIS_BRANCH: "master"
+GENESIS_BRANCH: "sokol"
