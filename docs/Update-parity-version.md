@@ -55,9 +55,9 @@ and check parity version (replace `bootnode` with correct role name ,e.g. `valid
 ```
 sample output:
 ```
-Parity
-  version Parity/v1.11.8-stable-c754a02-20180725/x86_64-linux-gnu/rustc1.27.2
-Copyright 2015, 2016, 2017, 2018 Parity Technologies (UK) Ltd
+Parity Ethereum
+  version Parity-Ethereum/v2.2.1-beta-5c56fc5-20181114/x86_64-linux-gnu/rustc1.30.1
+Copyright 2015-2018 Parity Technologies (UK) Ltd.
 License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>.
 This is free software: you are free to change and redistribute it.
 There is NO WARRANTY, to the extent permitted by law.
@@ -122,7 +122,7 @@ cp -a backups-version/20180209T214517/node.toml .
 sample output:
 ```
 Parity
-  version Parity/v1.10.6-unstable-bc0d134-20180605/x86_64-linux-gnu/rustc1.26.2
+  version Parity/v1.11.8-stable-c754a02-20180725/x86_64-linux-gnu/rustc1.27.2
 Copyright 2015, 2016, 2017, 2018 Parity Technologies (UK) Ltd
 License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>.
 This is free software: you are free to change and redistribute it.

@@ -78,6 +78,15 @@
   become_user: "{{ poa_role }}"
   when: (resync or "off") == "on"
 
+- name: Update netstats
+  command: "git pull origin master"
+  args:
+    chdir: "{{ home }}/eth-net-intelligence-api"
+  # when: (update_netstats or "off") == "on"
+  become: true
+  become_user: "{{ poa_role }}"
+  ignore_errors: yes
+
 - name: Launch poa-parity service
   service: name=poa-parity state=started
 
