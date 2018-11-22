@@ -20,7 +20,7 @@ cp group_vars/upd-parity-version.example group_vars/all
 ```
 and change the following variables:
 * `poa_role` - role of the node on the network (one of `bootnode`, `validator`, `moc`, `explorer`)
-* `resync` - must be set to `"off"`
+* `resync` - must be set to `"on"`
 
 don't change other options
 
