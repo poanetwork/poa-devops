@@ -20,7 +20,7 @@ cp group_vars/upd-parity-version.example group_vars/all
 ```
 and change the following variables:
 * `poa_role` - role of the node on the network (one of `bootnode`, `validator`, `moc`, `explorer`)
-* `resync` - must be set to `"on"`
+* `GENESIS_BRANCH` - either `"sokol"` or `"core"` depending which network you're updating
 
 don't change other options
 
