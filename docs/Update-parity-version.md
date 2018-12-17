@@ -53,7 +53,7 @@ and check parity version (replace `bootnode` with correct role name ,e.g. `valid
 ```
 /home/bootnode/parity --version
 ```
-sample output:
+sample output (version number may be different):
 ```
 Parity Ethereum
   version Parity-Ethereum/v2.2.1-beta-5c56fc5-20181114/x86_64-linux-gnu/rustc1.30.1
@@ -119,7 +119,7 @@ cp -a backups-version/20180209T214517/node.toml .
 ```
 ./parity --version
 ```
-sample output:
+sample output (version number may be different):
 ```
 Parity
   version Parity/v1.11.8-stable-c754a02-20180725/x86_64-linux-gnu/rustc1.27.2
