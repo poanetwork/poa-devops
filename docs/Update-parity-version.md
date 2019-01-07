@@ -20,7 +20,7 @@ cp group_vars/upd-parity-version.example group_vars/all
 ```
 and change the following variables:
 * `poa_role` - role of the node on the network (one of `bootnode`, `validator`, `moc`, `explorer`)
-* `GENESIS_BRANCH` - either `"sokol"` or `"core"` depending which network you're updating
+* `GENESIS_BRANCH` - either `"sokol"` or `"core"` or `"dai"` depending which network you're updating
 
 don't change other options
 
@@ -35,6 +35,7 @@ don't change other options
 ```
 ansible-playbook -i hosts upd-parity-version.yml
 ```
+**NOTE** if you're getting ssh connection error, try to add option `-e 'ansible_ssh_user=ubuntu'` to the command line above, substituting `ubuntu` with correct ssh username, which is usually either `ubuntu` or `root` or `poa` or `centos` depending on your setup
 
 ### Verifying the update
 0. playbook run should be completed without errors

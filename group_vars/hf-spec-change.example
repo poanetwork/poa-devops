@@ -1,6 +1,6 @@
 ---
 # bootnode | moc | validator | explorer | netstat
-poa_role: "bootnode"
+poa_role: "validator"
 
 # repo to fetch HFs from
 MAIN_REPO_FETCH: "poanetwork"

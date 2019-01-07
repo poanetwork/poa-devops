@@ -20,7 +20,7 @@ cp group_vars/hf-spec-change.example group_vars/all
 and set the following variables:
 * `poa_role` - node's role (one of `bootnode`, `validator`, `moc`, `explorer`, `netstat`)
 * `MAIN_REPO_FETCH` - github account where spec.json is located (e.g. `poanetwork`)
-* `GENESIS_BRANCH` - correct network name (`sokol` for testnet, `core` for mainnet)
+* `GENESIS_BRANCH` - correct network name (`sokol` for testnet, `core` for mainnet, `dai` for xdai-chain)
 
 3. create/edit `hosts` file:
 ```
@@ -56,6 +56,8 @@ on lines where you omitted explicit `poa_role`, the value from `group_vars/all` 
 ```
 ansible-playbook -i hosts site.yml
 ```
+
+**NOTE** if you're getting ssh connection error, try to add option `-e 'ansible_ssh_user=ubuntu'` to the command line above, substituting `ubuntu` with correct ssh username, which is usually either `ubuntu` or `root` or `poa` or `centos` depending on your setup
 
 5. verify that your node is active in the netstat of the corresponding network (https://sokol-netstat.poa.network/ for `sokol` or https://core-netstat.poa.network/ for `core`)
 
