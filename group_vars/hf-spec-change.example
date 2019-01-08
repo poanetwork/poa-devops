@@ -4,4 +4,4 @@ poa_role: "validator"
 
 # repo to fetch HFs from
 MAIN_REPO_FETCH: "poanetwork"
-GENESIS_BRANCH: "sokol"
+GENESIS_BRANCH: "core"
