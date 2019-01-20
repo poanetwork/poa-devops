@@ -7,7 +7,7 @@ GENESIS_BRANCH: "core"
 backup_parity_data: "on"
 
 # do full resync
-resync: "on"
+resync: "off"
 
 # strings to remove from node.toml
 bootnode_node_toml_lines_to_remove: []
@@ -15,4 +15,4 @@ bootnode_node_toml_lines_to_remove: []
 # strings to add in node.toml
 bootnode_node_toml_lines_to_add: []
 
-update_netstats: "on"
+update_netstats: "off"
