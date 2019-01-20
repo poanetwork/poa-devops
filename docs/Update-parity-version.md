@@ -57,7 +57,7 @@ and check parity version (replace `bootnode` with correct role name ,e.g. `valid
 sample output (version number may be different):
 ```
 Parity Ethereum
-  version Parity-Ethereum/v2.2.1-beta-5c56fc5-20181114/x86_64-linux-gnu/rustc1.30.1
+  version Parity-Ethereum/v2.3.0-beta-10657d9-20190115/x86_64-linux-gnu/rustc1.31.1
 Copyright 2015-2018 Parity Technologies (UK) Ltd.
 License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>.
 This is free software: you are free to change and redistribute it.
@@ -65,7 +65,6 @@ There is NO WARRANTY, to the extent permitted by law.
 
 By Wood/Paronyan/Kotewicz/Drwięga/Volf
    Habermeier/Czaban/Greeff/Gotchac/Redmann
-
 ```
 
 3. during the following day check status of your node on network status webpage and associated functions (e.g. for validators - are block rewards still being sent from your mining key to your payout key).
