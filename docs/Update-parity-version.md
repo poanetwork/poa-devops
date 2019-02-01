@@ -43,6 +43,7 @@ ansible-playbook -i hosts upd-parity-version.yml
 1. open network statistic webpage:
   - for sokol test network: https://sokol-netstat.poa.network
   - for core main network: https://core-netstat.poa.network
+  - for dai network: https://dai-netstat.poa.network
 
 check that your node is "green" and is catching new blocks. It may take 5-6 minutes to fully start and reconnect
 
@@ -57,7 +58,7 @@ and check parity version (replace `bootnode` with correct role name ,e.g. `valid
 sample output (version number may be different):
 ```
 Parity Ethereum
-  version Parity-Ethereum/v2.3.0-beta-10657d9-20190115/x86_64-linux-gnu/rustc1.31.1
+  version Parity-Ethereum/v2.3.1-beta-938c8d8-20190130/x86_64-linux-gnu/rustc1.31.1
 Copyright 2015-2018 Parity Technologies (UK) Ltd.
 License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>.
 This is free software: you are free to change and redistribute it.
