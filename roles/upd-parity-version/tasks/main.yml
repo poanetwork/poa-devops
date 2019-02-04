@@ -1,26 +1,26 @@
 ---
 - set_fact:
-    PARITY_BIN_LOC_UBUNTU: "https://releases.parity.io/ethereum/v2.3.1/x86_64-unknown-linux-gnu/parity"
-    PARITY_BIN_SHA256_UBUNTU: "c7bca14bc9be2b46f8c071004d3b5c88a1e9f523906d1068aca38ec00d9e9950"
-    PARITY_BIN_LOC_CENTOS: "https://releases.parity.io/ethereum/v2.3.1/x86_64-unknown-linux-gnu/parity"
-    PARITY_BIN_SHA256_CENTOS: "c7bca14bc9be2b46f8c071004d3b5c88a1e9f523906d1068aca38ec00d9e9950"
-    PARITY_VERSION_CHECK: "2.3.1"
+    PARITY_BIN_LOC_UBUNTU: "https://releases.parity.io/ethereum/v2.3.2/x86_64-unknown-linux-gnu/parity"
+    PARITY_BIN_SHA256_UBUNTU: "9abd1aaa60d23aa5eb99d9392b203e837679a64f03662bf1057712d9c2cb70ad"
+    PARITY_BIN_LOC_CENTOS: "https://releases.parity.io/ethereum/v2.3.2/x86_64-unknown-linux-gnu/parity"
+    PARITY_BIN_SHA256_CENTOS: "9abd1aaa60d23aa5eb99d9392b203e837679a64f03662bf1057712d9c2cb70ad"
+    PARITY_VERSION_CHECK: "2.3.2"
   when: GENESIS_BRANCH == 'sokol'
 
 - set_fact:
-    PARITY_BIN_LOC_UBUNTU: "https://releases.parity.io/ethereum/v2.3.0/x86_64-unknown-linux-gnu/parity"
-    PARITY_BIN_SHA256_UBUNTU: "c55c0c1ee397c7a1999ff8e19f9f91caf1b93e239a2a4fc85f57d18eb934f63b"
-    PARITY_BIN_LOC_CENTOS: "https://releases.parity.io/ethereum/v2.3.0/x86_64-unknown-linux-gnu/parity"
-    PARITY_BIN_SHA256_CENTOS: "c55c0c1ee397c7a1999ff8e19f9f91caf1b93e239a2a4fc85f57d18eb934f63b"
-    PARITY_VERSION_CHECK: "2.3.0"
+    PARITY_BIN_LOC_UBUNTU: "https://releases.parity.io/ethereum/v2.3.2/x86_64-unknown-linux-gnu/parity"
+    PARITY_BIN_SHA256_UBUNTU: "9abd1aaa60d23aa5eb99d9392b203e837679a64f03662bf1057712d9c2cb70ad"
+    PARITY_BIN_LOC_CENTOS: "https://releases.parity.io/ethereum/v2.3.2/x86_64-unknown-linux-gnu/parity"
+    PARITY_BIN_SHA256_CENTOS: "9abd1aaa60d23aa5eb99d9392b203e837679a64f03662bf1057712d9c2cb70ad"
+    PARITY_VERSION_CHECK: "2.3.2"
   when: GENESIS_BRANCH == 'core'
 
 - set_fact:
-    PARITY_BIN_LOC_UBUNTU: "https://releases.parity.io/ethereum/v2.3.0/x86_64-unknown-linux-gnu/parity"
-    PARITY_BIN_SHA256_UBUNTU: "c55c0c1ee397c7a1999ff8e19f9f91caf1b93e239a2a4fc85f57d18eb934f63b"
-    PARITY_BIN_LOC_CENTOS: "https://releases.parity.io/ethereum/v2.3.0/x86_64-unknown-linux-gnu/parity"
-    PARITY_BIN_SHA256_CENTOS: "c55c0c1ee397c7a1999ff8e19f9f91caf1b93e239a2a4fc85f57d18eb934f63b"
-    PARITY_VERSION_CHECK: "2.3.0"
+    PARITY_BIN_LOC_UBUNTU: "https://releases.parity.io/ethereum/v2.3.2/x86_64-unknown-linux-gnu/parity"
+    PARITY_BIN_SHA256_UBUNTU: "9abd1aaa60d23aa5eb99d9392b203e837679a64f03662bf1057712d9c2cb70ad"
+    PARITY_BIN_LOC_CENTOS: "https://releases.parity.io/ethereum/v2.3.2/x86_64-unknown-linux-gnu/parity"
+    PARITY_BIN_SHA256_CENTOS: "9abd1aaa60d23aa5eb99d9392b203e837679a64f03662bf1057712d9c2cb70ad"
+    PARITY_VERSION_CHECK: "2.3.2"
   when: GENESIS_BRANCH == 'dai'
 
 - name: Check that node role is correct

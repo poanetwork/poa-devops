@@ -58,7 +58,7 @@ and check parity version (replace `bootnode` with correct role name ,e.g. `valid
 sample output (version number may be different):
 ```
 Parity Ethereum
-  version Parity-Ethereum/v2.3.1-beta-938c8d8-20190130/x86_64-linux-gnu/rustc1.31.1
+  version Parity-Ethereum/v2.3.2-beta-678138f-20190203/x86_64-linux-gnu/rustc1.31.1
 Copyright 2015-2018 Parity Technologies (UK) Ltd.
 License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>.
 This is free software: you are free to change and redistribute it.
