@@ -142,5 +142,6 @@ systemctl restart poa-netstats
 10. open network statistic webpage:
   - for sokol test network: https://sokol-netstat.poa.network
   - for core main network: https://core-netstat.poa.network
+  - for dai network: https://dai-netstat.poa.network
 
 check that your node is "green" and is catching new blocks. It may take 2-3 minutes to fully start and reconnect
