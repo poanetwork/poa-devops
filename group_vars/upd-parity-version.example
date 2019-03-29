@@ -4,7 +4,7 @@ poa_role: "validator"
 GENESIS_BRANCH: "core"
 
 # backup options
-backup_parity_data: "on"
+backup_parity_data: "off"
 
 # do full resync
 resync: "off"
