@@ -57,9 +57,12 @@ and check parity version (replace `bootnode` with correct role name ,e.g. `valid
 ```
 sample output (version number may be different):
 ```
+
+```
+```
 Parity Ethereum
-  version Parity-Ethereum/v2.3.2-beta-678138f-20190203/x86_64-linux-gnu/rustc1.31.1
-Copyright 2015-2018 Parity Technologies (UK) Ltd.
+  version Parity-Ethereum/v2.4.6-stable-94164e1-20190514/x86_64-linux-gnu/rustc1.34.1
+Copyright 2015-2019 Parity Technologies (UK) Ltd.
 License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>.
 This is free software: you are free to change and redistribute it.
 There is NO WARRANTY, to the extent permitted by law.
@@ -96,7 +99,7 @@ ls backups-version
 it contains folders labeled by the time backup was created in format`<year><month><day>T<hour><minute><second>`, e.g.
 ```
 # ls backups-version
-20180208T152105 20180209T214517
+20190311T200132 20190614T214517
 ```
 copy the version number that corresponds to this day. In the following examples we assume that it's `20180209T214517`.
 
@@ -111,9 +114,9 @@ rm node.toml
 
 7. restore previous versions of these files from backup (note dots `.` at the end of each line here, they are important):
 ```
-cp -a backups-version/20180209T214517/parity .
-cp -a backups-version/20180209T214517/parity_data .
-cp -a backups-version/20180209T214517/node.toml .
+cp -a backups-version/20190614T214517/parity .
+cp -a backups-version/20190614T214517/parity_data .
+cp -a backups-version/20180614T214517/node.toml .
 ```
 
 8. check parity version (must be previous one):
@@ -122,9 +125,9 @@ cp -a backups-version/20180209T214517/node.toml .
 ```
 sample output (version number may be different):
 ```
-Parity
-  version Parity/v1.11.8-stable-c754a02-20180725/x86_64-linux-gnu/rustc1.27.2
-Copyright 2015, 2016, 2017, 2018 Parity Technologies (UK) Ltd
+Parity Ethereum
+  version Parity-Ethereum/v2.3.2-beta-678138f-20190203/x86_64-linux-gnu/rustc1.31.1
+Copyright 2015-2018 Parity Technologies (UK) Ltd.
 License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>.
 This is free software: you are free to change and redistribute it.
 There is NO WARRANTY, to the extent permitted by law.
