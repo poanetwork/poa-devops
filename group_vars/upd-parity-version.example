@@ -1,7 +1,7 @@
 ---
 # bootnode | moc | validator | explorer | netstat
 poa_role: "validator"
-GENESIS_BRANCH: "core"
+GENESIS_BRANCH: "sokol"
 
 # backup options
 backup_parity_data: "off"
