@@ -20,7 +20,7 @@ cp group_vars/upd-parity-version.example group_vars/all
 ```
 and change the following variables:
 * `poa_role` - role of the node on the network (one of `bootnode`, `validator`, `moc`, `explorer`)
-* `GENESIS_BRANCH` - either `"sokol"` or `"core"` or `"dai"` depending which network you're updating
+* `GENESIS_BRANCH` - either `"sokol"` or `"core"` or `"dai"` or `"kovan"` depending which network you're updating
 
 don't change other options
 
@@ -44,6 +44,7 @@ ansible-playbook -i hosts upd-parity-version.yml
   - for sokol test network: https://sokol-netstat.poa.network
   - for core main network: https://core-netstat.poa.network
   - for dai network: https://dai-netstat.poa.network
+  - for kovan network: https://kovan-netstat.poa.network
 
 check that your node is "green" and is catching new blocks. It may take 5-6 minutes to fully start and reconnect
 
